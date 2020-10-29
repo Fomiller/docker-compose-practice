@@ -1,0 +1,17 @@
+# docker version
+version: "3.8"
+# define services
+services:
+  # front end service built from current directory
+  web:
+    build: .
+    # exposing internal port to external port
+    ports:
+      - "5000:5000"
+    volumes: 
+      - .:/code
+    environment: 
+      FLASK_ENV: development
+  redis:
+    # db created from this image
+    image: "redis:alpine"
